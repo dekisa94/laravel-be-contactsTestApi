@@ -12,8 +12,10 @@
 |
 */
 
-Route::middleware('api')->get('/contacts', 'ContactController@index');
-Route::middleware('api')->post('/contacts', 'ContactController@store');
-Route::middleware('api')->get('/contacts/{id}', 'ContactController@show');
-Route::middleware('api')->put('/contacts/{id}', 'ContactController@update');
-Route::middleware('api')->delete('/contacts/{id}', 'ContactController@destroy');
+Route::post('/login', 'Auth\LoginController@authenticate');
+
+Route::middleware('jwt')->get('/contacts', 'ContactController@index');
+Route::middleware('jwt')->post('/contacts', 'ContactController@store');
+Route::middleware('jwt')->get('/contacts/{id}', 'ContactController@show');
+Route::middleware('jwt')->put('/contacts/{id}', 'ContactController@update');
+Route::middleware('jwt')->delete('/contacts/{id}', 'ContactController@destroy');
